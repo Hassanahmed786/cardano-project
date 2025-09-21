@@ -2,8 +2,8 @@
 // This file contains configuration constants for the gift card dApp
 
 // Network Configuration
-export const NETWORK = "preprod" as const;
-export const NETWORK_MAGIC = 1;
+export const NETWORK = "preview" as const;
+export const NETWORK_MAGIC = 2;
 
 // Script Addresses
 export const GIFT_CARD_SCRIPT_ADDRESS = "addr_test1wp6hhcjcq5q9qvkz4ae7u5c77qgthqt3plm3ln8cx7u2ldqqsc3sz";
@@ -33,7 +33,7 @@ export const DEFAULT_PROTOCOL_PARAMETERS = {
 };
 
 // API Endpoints
-export const BLOCKFROST_API_URL = "https://cardano-preprod.blockfrost.io/api/v0";
+export const BLOCKFROST_API_URL = "https://cardano-preview.blockfrost.io/api/v0";
 
 // Frontend Configuration
 export const APP_NAME = "Cardano Gift Card";

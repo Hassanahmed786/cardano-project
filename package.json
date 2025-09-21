@@ -1,23 +1,43 @@
 {
   "name": "cardano-gift-card",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "description": "A decentralized gift card application on Cardano blockchain with NFT functionality",
+  "author": "Hassanahmed786",
+  "license": "MIT",
+  "keywords": ["cardano", "blockchain", "gift-card", "nft", "crypto", "web3"],
+  "homepage": "https://github.com/Hassanahmed786/cardano-project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Hassanahmed786/cardano-project.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint",
+    "export": "next export",
+    "deploy": "npm run build && npm run start"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@meshsdk/core": "^1.9.0-beta.74",
+    "@meshsdk/react": "^1.9.0-beta.74",
+    "@meshsdk/wallet": "^1.9.0-beta.74",
+    "autoprefixer": "^10.4.21",
+    "lucid-cardano": "^0.10.11",
+    "next": "15.5.3",
+    "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "next": "15.5.3"
+    "react-hot-toast": "^2.6.0"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@tailwindcss/postcss": "^4",
-    "tailwindcss": "^4"
+    "tailwindcss": "^4.1.13",
+    "typescript": "^5"
   }
 }

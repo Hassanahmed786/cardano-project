@@ -1,0 +1,26 @@
+{
+  "name": "cardano-gift-card",
+  "version": 2,
+  "public": true,
+  "github": {
+    "silent": true
+  },
+  "env": {
+    "NEXT_PUBLIC_BLOCKFROST_API_KEY_PREPROD": "@blockfrost-api-key",
+    "NEXT_PUBLIC_PINATA_API_KEY": "@pinata-api-key", 
+    "NEXT_PUBLIC_PINATA_SECRET_KEY": "@pinata-secret-key",
+    "NEXT_PUBLIC_IPFS_GATEWAY": "@ipfs-gateway",
+    "NEXT_PUBLIC_NETWORK": "preprod"
+  },
+  "build": {
+    "env": {
+      "NEXT_PUBLIC_BLOCKFROST_API_KEY_PREPROD": "@blockfrost-api-key",
+      "NEXT_PUBLIC_PINATA_API_KEY": "@pinata-api-key",
+      "NEXT_PUBLIC_PINATA_SECRET_KEY": "@pinata-secret-key", 
+      "NEXT_PUBLIC_IPFS_GATEWAY": "@ipfs-gateway",
+      "NEXT_PUBLIC_NETWORK": "preprod"
+    }
+  },
+  "regions": ["iad1"],
+  "framework": "nextjs"
+}

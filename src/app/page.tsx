@@ -1,103 +1,183 @@
-import Image from "next/image";
+// File: app/page.tsx
+"use client";
+
+import { useState, useEffect } from 'react';
+import dynamic from 'next/dynamic';
+
+// Error boundary for wallet issues
+const ErrorBoundary = dynamic(() => import('../components/ErrorBoundary'), {
+  ssr: false
+});
+
+// Dynamically import components to avoid SSR issues
+const CreateCardForm = dynamic(() => import('../components/CreateCardForm'), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-700 h-48 rounded-lg"></div>
+});
+
+const MyGiftCards = dynamic(() => import('../components/MyGiftCards'), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-700 h-48 rounded-lg"></div>
+});
+
+const NFTGallery = dynamic(() => import('../components/NFTGallery'), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-700 h-48 rounded-lg"></div>
+});
+
+const WelcomePage = dynamic(() => import('../components/WelcomePage'), {
+  ssr: false,
+  loading: () => (
+    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center">
+      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+    </div>
+  )
+});
+
+// Import MeshJS components dynamically to avoid SSR
+const DynamicWalletConnection = dynamic(
+  () => import('../components/WalletConnection'),
+  {
+    ssr: false,
+    loading: () => <div className="animate-pulse bg-gray-600 h-10 w-32 rounded-lg"></div>
+  }
+);
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const [mounted, setMounted] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(true);
+  const [activeTab, setActiveTab] = useState('create');
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const handleGetStarted = () => {
+    setShowWelcome(false);
+  };
+
+  if (!mounted) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white"></div>
+      </div>
+    );
+  }
+
+  if (showWelcome) {
+    return <WelcomePage onGetStarted={handleGetStarted} />;
+  }
+
+  return (
+    <ErrorBoundary>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-violet-900">
+        {/* Header */}
+        <header className="border-b border-gray-700/50 backdrop-blur-sm bg-black/20">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center space-x-3">
+                <button 
+                  onClick={() => setShowWelcome(true)}
+                  className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+                >
+                  <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                    <span className="text-xl">🎁</span>
+                  </div>
+                  <div>
+                    <h1 className="text-2xl font-bold text-white">CardanoGift</h1>
+                    <p className="text-xs text-gray-400">Blockchain Gift Cards</p>
+                  </div>
+                </button>
+              </div>
+              <div className="flex items-center space-x-4">
+                <ErrorBoundary>
+                  <DynamicWalletConnection />
+                </ErrorBoundary>
+              </div>
+            </div>
+          </div>
+        </header>
+
+      {/* Main Content */}
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        {/* Tab Navigation */}
+        <div className="flex space-x-1 mb-8 bg-white/5 p-1 rounded-lg">
+          <button
+            onClick={() => setActiveTab('create')}
+            className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+              activeTab === 'create'
+                ? 'bg-white/20 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-white/10'
+            }`}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            🎁 Create Gift Card
+          </button>
+          <button
+            onClick={() => setActiveTab('cards')}
+            className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+              activeTab === 'cards'
+                ? 'bg-white/20 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-white/10'
+            }`}
           >
-            Read our docs
-          </a>
+            📋 My Gift Cards
+          </button>
+          <button
+            onClick={() => setActiveTab('nfts')}
+            className={`flex-1 py-3 px-4 rounded-lg font-medium transition-all duration-200 ${
+              activeTab === 'nfts'
+                ? 'bg-white/20 text-white shadow-lg'
+                : 'text-gray-400 hover:text-white hover:bg-white/10'
+            }`}
+          >
+            🖼️ NFT Gallery
+          </button>
+        </div>
+
+        {/* Tab Content */}
+        <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
+          {activeTab === 'create' && (
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <span className="w-2 h-2 bg-green-500 rounded-full mr-3"></span>
+                Create Gift Card
+              </h2>
+              <CreateCardForm />
+            </div>
+          )}
+
+          {activeTab === 'cards' && (
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <span className="w-2 h-2 bg-blue-500 rounded-full mr-3"></span>
+                My Gift Cards
+              </h2>
+              <MyGiftCards />
+            </div>
+          )}
+
+          {activeTab === 'nfts' && (
+            <div>
+              <h2 className="text-2xl font-bold text-white mb-6 flex items-center">
+                <span className="w-2 h-2 bg-purple-500 rounded-full mr-3"></span>
+                NFT Gallery
+              </h2>
+              <NFTGallery />
+            </div>
+          )}
         </div>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+
+        {/* Footer */}
+        <footer className="border-t border-gray-700/50 backdrop-blur-sm bg-black/20 mt-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div className="text-center text-gray-400">
+              <p>Built with ❤️ using Aiken, Next.js, and MeshJS</p>
+              <p className="text-sm mt-1">Secure gift cards on the Cardano blockchain</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </ErrorBoundary>
   );
 }

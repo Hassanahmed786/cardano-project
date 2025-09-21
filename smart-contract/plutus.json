@@ -1,0 +1,71 @@
+{
+  "preamble": {
+    "title": "cardano-gift-card/gift-card",
+    "description": "Aiken contracts for gift card project",
+    "version": "1.0.0",
+    "plutusVersion": "v3",
+    "compiler": {
+      "name": "Aiken",
+      "version": "v1.1.19+e525483"
+    },
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "gift_card.gift_card.spend",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/gift_card~1GiftCardDatum"
+        }
+      },
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/gift_card~1GiftCardRedeemer"
+        }
+      },
+      "compiledCode": "58dc01010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900118031baa0018994c004c028006601460160035980099b8748000c01cdd5001c56600260106ea800e2934590094590062444b30013370e900118051baa0028a50899199119801001000912cc00400629422b30013371e6eb8c04000400e29462660040046022002806100f1bac300e300f300f300f300f300f300f300f300f300c3754601c0126eb8c034c02cdd5180698059baa002402430073754003164014600e002600e6010002600e00260066ea801e29344d9590011",
+      "hash": "5e857cb94fc0c05c949a790661ab9945df66ce8740931616661b1fbf"
+    },
+    {
+      "title": "gift_card.gift_card.else",
+      "redeemer": {
+        "schema": {}
+      },
+      "compiledCode": "58dc01010029800aba2aba1aab9faab9eaab9dab9a48888896600264646644b30013370e900118031baa0018994c004c028006601460160035980099b8748000c01cdd5001c56600260106ea800e2934590094590062444b30013370e900118051baa0028a50899199119801001000912cc00400629422b30013371e6eb8c04000400e29462660040046022002806100f1bac300e300f300f300f300f300f300f300f300f300c3754601c0126eb8c034c02cdd5180698059baa002402430073754003164014600e002600e6010002600e00260066ea801e29344d9590011",
+      "hash": "5e857cb94fc0c05c949a790661ab9945df66ce8740931616661b1fbf"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "gift_card/GiftCardDatum": {
+      "title": "GiftCardDatum",
+      "anyOf": [
+        {
+          "title": "GiftCardDatum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "recipient",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    },
+    "gift_card/GiftCardRedeemer": {
+      "title": "GiftCardRedeemer",
+      "anyOf": [
+        {
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    }
+  }
+}

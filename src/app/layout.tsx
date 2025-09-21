@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Cardano NFT Gift Card Creator",
-  description: "Send and receive ADA gift cards secured by smart contracts on Cardano",
+  title: "Lovelace Treasury - Cardano Gift Cards",
+  description: "Send and receive ADA gift cards secured by smart contracts on Cardano with Lovelace Treasury",
 };
 
 export default function RootLayout({

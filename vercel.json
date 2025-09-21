@@ -1,5 +1,5 @@
 {
-  "name": "cardano-gift-card-dapp",
+  "name": "lovelace-treasury",
   "version": 2,
   "framework": "nextjs",
   "regions": ["iad1"],

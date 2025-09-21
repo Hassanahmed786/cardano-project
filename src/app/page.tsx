@@ -84,7 +84,7 @@ export default function Home() {
                     <span className="text-xl">🎁</span>
                   </div>
                   <div>
-                    <h1 className="text-2xl font-bold text-white">CardanoGift</h1>
+                    <h1 className="text-2xl font-bold text-white">Lovelace Treasury</h1>
                     <p className="text-xs text-gray-400">Blockchain Gift Cards</p>
                   </div>
                 </button>

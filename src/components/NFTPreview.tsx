@@ -64,7 +64,7 @@ const NFTPreview = forwardRef<NFTPreviewRef, NFTPreviewProps>(({ design, adaAmou
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 36px Arial';
     ctx.textAlign = 'center';
-    ctx.fillText('🎁 Gift Card', canvas.width / 2, 80);
+    ctx.fillText('🎁 Lovelace Treasury', canvas.width / 2, 80);
 
     // ADA Amount
     ctx.font = 'bold 48px Arial';
@@ -187,9 +187,9 @@ const NFTPreview = forwardRef<NFTPreviewRef, NFTPreviewProps>(({ design, adaAmou
         <h3 className="text-lg font-semibold text-white mb-4">📋 NFT Metadata</h3>
         <pre className="text-xs text-gray-300 bg-gray-900 p-3 rounded overflow-x-auto">
 {JSON.stringify({
-  name: `Cardano Gift Card - ${adaAmount} ADA`,
+  name: `Lovelace Treasury Gift Card - ${adaAmount} ADA`,
   image: "ipfs://[generated-hash]",
-  description: design.message || "A personalized ADA gift card on Cardano blockchain",
+  description: design.message || "A personalized ADA gift card from Lovelace Treasury on Cardano blockchain",
   attributes: [
     { trait_type: "Theme", value: design.theme },
     { trait_type: "Template", value: design.template },

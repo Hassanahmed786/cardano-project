@@ -36,6 +36,6 @@ export const DEFAULT_PROTOCOL_PARAMETERS = {
 export const BLOCKFROST_API_URL = "https://cardano-preview.blockfrost.io/api/v0";
 
 // Frontend Configuration
-export const APP_NAME = "Cardano Gift Card";
-export const APP_DESCRIPTION = "Send and receive ADA gift cards on Cardano";
+export const APP_NAME = "Lovelace Treasury";
+export const APP_DESCRIPTION = "Send and receive ADA gift cards on Cardano with Lovelace Treasury";
 export const SUPPORTED_WALLETS = ["lace", "eternl", "flint", "typhon", "nami"] as const;

@@ -36,9 +36,9 @@ export class NFTMetadataService {
     sender?: string
   ): NFTMetadata {
     return {
-      name: `Cardano Gift Card - ${adaAmount} ADA`,
+      name: `Lovelace Treasury Gift Card - ${adaAmount} ADA`,
       image: "", // Will be filled after IPFS upload
-      description: design.message || `A personalized ${adaAmount} ADA gift card on the Cardano blockchain. Redeemable by the recipient.`,
+      description: design.message || `A personalized ${adaAmount} ADA gift card from Lovelace Treasury on the Cardano blockchain. Redeemable by the recipient.`,
       attributes: [
         { trait_type: "Theme", value: design.theme },
         { trait_type: "Template", value: design.template },

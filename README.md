@@ -1,5 +1,7 @@
 # 🎁 Cardano NFT Gift Card dApp
 
+try our app: https://lovelacetreasury.vercel.app/
+
 A revolutionary decentralized application that transforms traditional gift cards into personalized NFTs on the Cardano blockchain. Create beautiful, customizable NFT gift cards that can be loaded with ADA and redeemed by recipients.
 
 ## ✨ Features

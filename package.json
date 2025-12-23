@@ -5,7 +5,16 @@
   "description": "Lovelace Treasury - A decentralized gift card application on Cardano blockchain with NFT functionality",
   "author": "Hassanahmed786",
   "license": "MIT",
-  "keywords": ["cardano", "blockchain", "gift-card", "nft", "crypto", "web3", "lovelace", "treasury"],
+  "keywords": [
+    "cardano",
+    "blockchain",
+    "gift-card",
+    "nft",
+    "crypto",
+    "web3",
+    "lovelace",
+    "treasury"
+  ],
   "homepage": "https://github.com/Hassanahmed786/cardano-project",
   "repository": {
     "type": "git",
@@ -26,7 +35,7 @@
     "@meshsdk/wallet": "^1.9.0-beta.74",
     "autoprefixer": "^10.4.21",
     "lucid-cardano": "^0.10.11",
-    "next": "15.5.3",
+    "next": "15.5.9",
     "postcss": "^8.5.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
